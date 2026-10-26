@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le poste d'Élodie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --table:#8f9ba1; --table2:#7b878e;
+  --kraft:#d6b782; --kraft-ink:#3b2d18;
+  --card:#fbfbf7; --card-line:#b8cbe4; --card-margin:#d96b6b; --pen:#1d3f8a;
+  --shadow:0 18px 40px rgba(20,30,40,.35);
+  --hand:"Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --typed:"Courier Prime", "Courier New", Courier, monospace;
+  --sys:"Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --accent:#1f6fb2;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --table:#26313a; --table2:#1d262d; --card:#e9e8e1; --shadow:0 18px 40px rgba(0,0,0,.6); } }
+:root[data-theme="dark"]{ --table:#26313a; --table2:#1d262d; --card:#e9e8e1; --shadow:0 18px 40px rgba(0,0,0,.6); }
+:root{ box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{ margin:0; min-height:100%; font-family:var(--sys); color:#1f2328;
+  background:radial-gradient(ellipse at 60% 10%, var(--table) 0%, var(--table2) 75%) fixed, var(--table2); }
+.stage{ display:flex; flex-wrap:wrap; gap:32px; justify-content:center; align-items:flex-start; padding:26px 14px 40px; max-width:1300px; margin:0 auto; }
+
+/* ---------- Bureau de l'enquêteur ---------- */
+.side{ width:min(350px,100%); display:flex; flex-direction:column; gap:20px; }
+.tag{ position:relative; background:var(--kraft); color:var(--kraft-ink); font-family:var(--typed);
+  padding:20px 20px 18px 42px; border-radius:4px 14px 14px 4px; box-shadow:var(--shadow); transform:rotate(-1deg); }
+.tag::before{ content:""; position:absolute; left:15px; top:50%; width:14px; height:14px; margin-top:-7px; border-radius:50%; background:var(--table2); box-shadow:inset 0 0 0 3px #b99a66; }
+.tag h1{ margin:0 0 10px; font-size:1.08rem; }
+.tag p{ margin:0 0 8px; font-size:.86rem; line-height:1.45; }
+.tag .row2{ display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.stamp{ border:2px solid #8e2a22; color:#8e2a22; padding:2px 8px; transform:rotate(-4deg); font-weight:700; font-size:.85rem; display:inline-block; }
+.timer{ font-weight:700; }
+.objects{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+.frame{ width:98px; background:#5b4636; padding:7px; border-radius:3px; box-shadow:0 8px 14px rgba(0,0,0,.3); }
+.frame .pic{ height:76px; display:grid; place-items:center; font-size:2.4rem; }
+.frame .cap{ font-family:var(--hand); color:#f4ead8; text-align:center; font-size:1.2rem; line-height:1.1; margin-top:4px; }
+.badge{ width:120px; background:#fff; border-radius:8px; box-shadow:0 8px 14px rgba(0,0,0,.3); overflow:hidden; font-size:.7rem; transform:rotate(3deg); }
+.badge .top{ background:#23415c; color:#fff; padding:6px 8px; font-weight:700; letter-spacing:.04em; }
+.badge .bd{ padding:8px; line-height:1.4; }
+.badge .ph{ width:34px; height:40px; background:#d9d2c6; float:left; margin-right:6px; display:grid; place-items:center; font-size:1.2rem; }
+.mug{ width:92px; height:104px; background:#fff; border-radius:6px 6px 14px 14px; box-shadow:0 8px 14px rgba(0,0,0,.3); position:relative; display:grid; place-items:center; text-align:center; font-family:var(--hand); font-size:1.12rem; line-height:1.05; color:#23415c; padding:6px; }
+.mug::after{ content:""; position:absolute; right:-18px; top:24px; width:22px; height:40px; border:6px solid #fff; border-left:0; border-radius:0 18px 18px 0; }
+.card{ background:var(--card); color:var(--pen); box-shadow:var(--shadow); transform:rotate(.6deg);
+  padding:16px 18px 18px 46px; border-radius:3px;
+  background-image:linear-gradient(to right, transparent 34px, var(--card-margin) 34px, var(--card-margin) 35px, transparent 35px),
+    repeating-linear-gradient(to bottom, transparent 0 31px, var(--card-line) 31px 32px);
+  background-position:0 0, 0 14px; }
+.card h2{ font-family:var(--hand); font-size:1.85rem; margin:0; line-height:32px; color:#8e2a22; font-weight:700; }
+.card .count{ font-size:1.3rem; color:var(--pen); }
+.card p{ font-family:var(--hand); font-size:1.24rem; line-height:32px; margin:0; }
+.card textarea{ width:100%; min-height:160px; border:0; background:transparent; resize:vertical; font-family:var(--hand); font-size:1.28rem; line-height:32px; color:var(--pen); padding:0; outline:none; }
+.actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.btn{ font-family:var(--typed); font-size:.95rem; font-weight:700; border:2px solid var(--kraft-ink); background:var(--kraft); color:var(--kraft-ink); padding:10px 14px; border-radius:6px; cursor:pointer; }
+.btn.primary{ background:#8e2a22; border-color:#8e2a22; color:#fff4e6; }
+.btn.ghost{ background:transparent; border-color:rgba(0,0,0,.35); color:inherit; font-weight:400; }
+button:focus-visible, input:focus-visible, textarea:focus-visible{ outline:3px solid #2f6fe0; outline-offset:2px; }
+.hintbox{ font-family:var(--hand); font-size:1.32rem; line-height:1.25; color:var(--pen); background:#fff7b8; padding:12px 14px; box-shadow:var(--shadow); transform:rotate(-1.5deg); display:none; }
+.hintbox small{ display:block; font-family:var(--typed); font-size:.72rem; color:#6b5f20; }
+
+/* ---------- Écran ---------- */
+.monitor{ width:min(880px,100%); display:flex; flex-direction:column; align-items:center; }
+.bezel{ width:100%; background:#1a1c20; border-radius:14px; padding:12px 12px 22px; box-shadow:var(--shadow); position:relative; }
+.bezel::after{ content:"BRÉVANT IT"; position:absolute; bottom:5px; left:50%; transform:translateX(-50%); color:#555a62; font-size:.6rem; letter-spacing:.2em; }
+.neck{ width:90px; height:44px; background:linear-gradient(90deg,#2a2d33,#3a3e45,#2a2d33); }
+.foot{ width:240px; height:14px; background:#2d3036; border-radius:8px 8px 3px 3px; box-shadow:0 8px 14px rgba(0,0,0,.35); }
+.display{ position:relative; width:100%; height:clamp(560px, 60vw, 600px); overflow:hidden; border-radius:3px; font-size:13px; color:#1b1b1b;
+  background:
+   linear-gradient(to bottom, rgba(10,25,45,.15), rgba(10,25,45,.45)),
+   linear-gradient(168deg, #5d86b0 0%, #a9c2d6 38%, #e8edf0 50%, #7d9178 51%, #3d5540 72%, #22331f 100%); }
+.display .brand{ position:absolute; right:22px; bottom:60px; color:rgba(255,255,255,.55); font-size:1.6rem; font-weight:300; letter-spacing:.35em; }
+.icons{ position:absolute; top:12px; left:10px; display:flex; flex-direction:column; gap:8px; flex-wrap:wrap; max-height:calc(100% - 64px); }
+.dicon{ width:82px; background:none; border:0; color:#fff; font-family:var(--sys); font-size:.74rem; text-shadow:0 1px 3px rgba(0,0,0,.8); cursor:pointer; padding:6px 2px; border-radius:4px; display:flex; flex-direction:column; align-items:center; gap:3px; }
+.dicon span{ font-size:1.9rem; text-shadow:none; }
+.dicon:hover{ background:rgba(255,255,255,.18); }
+.taskbar{ position:absolute; left:0; right:0; bottom:0; height:44px; background:rgba(236,240,244,.9); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); display:flex; align-items:center; padding:0 8px; gap:4px; border-top:1px solid rgba(0,0,0,.08); z-index:20; }
+.taskbar .tb{ height:36px; min-width:38px; border:0; background:none; border-radius:6px; font-size:1.2rem; cursor:pointer; position:relative; }
+.taskbar .tb:hover, .taskbar .tb.on{ background:rgba(0,0,0,.08); }
+.taskbar .tb.on::after{ content:""; position:absolute; bottom:2px; left:30%; right:30%; height:3px; border-radius:2px; background:var(--accent); }
+.tray{ margin-left:auto; display:flex; align-items:center; gap:8px; font-size:.72rem; text-align:right; line-height:1.2; }
+.tray button{ border:0; background:none; cursor:pointer; font-size:.95rem; padding:4px; border-radius:4px; }
+.tray button:hover{ background:rgba(0,0,0,.08); }
+.anydot{ display:inline-block; width:13px; height:13px; border-radius:50%; background:#1faa59; box-shadow:0 0 0 2px #fff inset; vertical-align:middle; }
+.popup{ position:absolute; right:10px; bottom:52px; width:250px; background:#fff; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.35); padding:14px; z-index:25; font-size:.8rem; line-height:1.5; display:none; }
+.popup b{ font-size:.9rem; }
+
+.win{ position:absolute; top:10px; left:100px; right:12px; bottom:54px; background:#f7f8fa; border-radius:8px; box-shadow:0 14px 40px rgba(0,0,0,.45); display:flex; flex-direction:column; overflow:hidden; z-index:10; }
+.titlebar{ height:34px; flex:none; display:flex; align-items:center; gap:8px; padding:0 0 0 12px; background:#eef1f4; border-bottom:1px solid #dde2e7; font-size:.8rem; }
+.titlebar .ttl{ flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.titlebar button{ width:44px; height:34px; border:0; background:none; cursor:pointer; font-size:.95rem; }
+.titlebar button:hover{ background:#e81123; color:#fff; }
+.wbody{ flex:1; overflow:auto; position:relative; }
+
+/* Composants génériques des applis */
+.split{ display:grid; grid-template-columns:170px 1fr; height:100%; }
+.nav{ background:#eef1f4; border-right:1px solid #dde2e7; padding:8px 6px; overflow:auto; }
+.nav button{ display:flex; gap:8px; align-items:center; width:100%; text-align:left; border:0; background:none; padding:7px 8px; border-radius:5px; cursor:pointer; font-family:var(--sys); font-size:.8rem; color:#1b1b1b; }
+.nav button:hover{ background:#e1e6eb; }
+.nav button.on{ background:#d4e2f0; font-weight:600; }
+.nav .sep{ height:1px; background:#dde2e7; margin:6px 4px; }
+.main{ overflow:auto; background:#fff; }
+.toolbar{ display:flex; align-items:center; gap:8px; padding:6px 10px; border-bottom:1px solid #e3e6ea; background:#fafbfc; font-size:.78rem; position:sticky; top:0; z-index:2; flex-wrap:wrap; }
+.toolbar .path{ flex:1; min-width:120px; background:#fff; border:1px solid #d6dbe0; border-radius:4px; padding:4px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.toolbar button{ border:1px solid #d6dbe0; background:#fff; border-radius:4px; padding:4px 10px; cursor:pointer; font-family:var(--sys); font-size:.78rem; }
+.toolbar label{ display:flex; gap:5px; align-items:center; cursor:pointer; }
+table.files{ width:100%; border-collapse:collapse; font-size:.8rem; }
+table.files th{ text-align:left; font-weight:500; color:#666; padding:6px 10px; border-bottom:1px solid #eee; position:sticky; top:37px; background:#fff; }
+table.files td{ padding:6px 10px; border-bottom:1px solid #f2f2f2; white-space:nowrap; }
+table.files tr.it{ cursor:pointer; }
+table.files tr.it:hover{ background:#eef4fb; }
+table.files tr.hid td:first-child{ opacity:.6; }
+.empty{ padding:30px; text-align:center; color:#888; }
+.viewer{ padding:18px 22px; font-size:.84rem; line-height:1.55; }
+.viewer pre{ white-space:pre-wrap; font-family:Consolas, "Courier New", monospace; font-size:.8rem; margin:0; background:#fbfbfb; border:1px solid #eee; padding:12px; border-radius:4px; }
+.viewer .meta{ color:#777; font-size:.75rem; margin-bottom:10px; }
+.sheet{ border-collapse:collapse; font-size:.78rem; }
+.sheet th,.sheet td{ border:1px solid #c9d1d8; padding:4px 8px; text-align:left; white-space:nowrap; }
+.sheet th{ background:#e8eef3; font-weight:600; }
+.paper{ background:#fff; max-width:560px; margin:0 auto; padding:26px 30px; box-shadow:0 2px 10px rgba(0,0,0,.12); font-family:Georgia, "Times New Roman", serif; font-size:.9rem; line-height:1.6; white-space:pre-wrap; }
+.dlg{ max-width:330px; margin:40px auto; background:#fff; border:1px solid #dde2e7; border-radius:8px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.12); }
+.dlg h3{ margin:0 0 8px; font-size:1rem; font-weight:600; }
+.dlg p{ margin:0 0 12px; font-size:.8rem; color:#555; line-height:1.4; }
+.dlg input{ width:100%; padding:8px; border:1px solid #c9d1d8; border-radius:4px; margin-bottom:8px; font-family:var(--sys); font-size:.85rem; }
+.dlg .err{ color:#c42b1c; font-size:.78rem; min-height:18px; }
+.pbtn{ background:var(--accent); color:#fff; border:0; border-radius:4px; padding:8px 16px; cursor:pointer; font-family:var(--sys); font-size:.84rem; }
+.mlist .m{ display:block; width:100%; text-align:left; border:0; border-bottom:1px solid #eee; background:#fff; padding:9px 12px; cursor:pointer; font-family:var(--sys); color:#1b1b1b; }
+.mlist .m:hover{ background:#eef4fb; }
+.mlist .m b{ display:flex; justify-content:space-between; gap:8px; font-size:.82rem; }
+.mlist .m b span{ font-weight:400; color:#777; font-size:.74rem; white-space:nowrap; }
+.mlist .m i{ display:block; font-style:normal; font-size:.8rem; color:#333; margin-top:2px; }
+.mlist .m small{ display:block; color:#888; font-size:.74rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mail{ padding:16px 20px; font-size:.84rem; line-height:1.55; }
+.mail h3{ margin:0 0 10px; font-size:1.05rem; font-weight:600; }
+.mail .hdr{ color:#555; font-size:.78rem; border-bottom:1px solid #eee; padding-bottom:10px; margin-bottom:12px; line-height:1.6; }
+.mail .body{ white-space:pre-wrap; }
+.mail .att{ display:inline-block; margin-top:14px; border:1px solid #d6dbe0; border-radius:4px; padding:6px 10px; font-size:.78rem; background:#fafbfc; }
+.chat{ padding:12px 16px; }
+.chat .day{ text-align:center; color:#888; font-size:.72rem; margin:14px 0 8px; }
+.chat .msg{ display:flex; gap:10px; margin:8px 0; }
+.chat .av{ width:32px; height:32px; border-radius:50%; flex:none; display:grid; place-items:center; color:#fff; font-weight:600; font-size:.78rem; }
+.chat .msg b{ font-size:.8rem; } .chat .msg b span{ font-weight:400; color:#888; font-size:.72rem; margin-left:6px; }
+.chat .msg p{ margin:2px 0 0; font-size:.84rem; line-height:1.4; }
+.kp{ background:#23282e; color:#e6e9ec; height:100%; overflow:auto; }
+.kp .dlg{ background:#2e343b; border-color:#3b434b; color:#e6e9ec; }
+.kp .dlg p{ color:#b7c0c8; } .kp .dlg input{ background:#1d2227; color:#fff; border-color:#4a535c; }
+.kp table.files th{ top:0; background:#2a3036; color:#9aa5af; border-color:#3b434b; }
+.kp table.files td{ border-color:#333a41; }
+.kp table.files tr.it:hover{ background:#323a42; }
+.kp .viewer{ color:#e6e9ec; } .kp .viewer pre{ background:#1d2227; border-color:#3b434b; color:#e6e9ec; }
+.sticky{ display:flex; flex-wrap:wrap; gap:16px; padding:18px; }
+.sticky div{ width:190px; min-height:150px; background:#fff27a; padding:14px; font-family:var(--hand); font-size:1.35rem; line-height:1.15; box-shadow:0 4px 10px rgba(0,0,0,.2); color:#2b2a20; }
+.sticky div:nth-child(2){ background:#ffc6dd; transform:rotate(-1.5deg); }
+.sticky div:nth-child(3){ background:#bfe7ff; transform:rotate(1.2deg); }
+.offline{ padding:30px; text-align:center; color:#555; font-size:.85rem; }
+
+.login{ position:absolute; inset:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; gap:12px;
+  background:linear-gradient(rgba(12,24,40,.45), rgba(12,24,40,.65)), linear-gradient(168deg, #5d86b0 0%, #a9c2d6 38%, #e8edf0 50%, #7d9178 51%, #3d5540 72%, #22331f 100%); backdrop-filter:blur(3px); }
+.login .clock{ position:absolute; top:40px; left:0; right:0; text-align:center; font-size:3.6rem; font-weight:300; }
+.login .clock small{ display:block; font-size:1rem; font-weight:400; }
+.login .avatar{ width:92px; height:92px; border-radius:50%; background:#dfe6ec; display:grid; place-items:center; font-size:2.4rem; color:#23415c; margin-top:70px; }
+.login h2{ margin:0; font-weight:500; font-size:1.3rem; }
+.login input{ width:250px; padding:9px 12px; border-radius:4px; border:0; border-bottom:2px solid var(--accent); font-family:var(--sys); font-size:.9rem; }
+.login .lk{ background:none; border:0; color:#fff; text-decoration:underline; cursor:pointer; font-size:.8rem; font-family:var(--sys); }
+.login .msg{ min-height:20px; font-size:.82rem; text-align:center; max-width:300px; }
+.login .shake{ animation:shake .4s; }
+@keyframes shake{ 20%,60%{transform:translateX(-10px)} 40%,80%{transform:translateX(10px)} }
+
+.modal{ position:fixed; inset:0; background:rgba(10,14,18,.6); display:none; align-items:flex-start; justify-content:center; z-index:50; overflow-y:auto; padding:calc(24px + env(safe-area-inset-top,0px)) 14px 30px; }
+.modal.open{ display:flex; }
+.report{ background:var(--card); color:#222; width:min(620px,100%); padding:26px 24px; border-radius:4px; box-shadow:var(--shadow); font-family:var(--typed); }
+.report h2{ margin:0 0 4px; font-size:1.25rem; }
+.report .sub{ margin:0 0 16px; font-size:.86rem; line-height:1.45; }
+.report .q{ border-top:1px dashed #999; padding:12px 0 8px; }
+.report label{ display:block; font-weight:700; font-size:.94rem; margin-bottom:6px; }
+.report input{ width:100%; font-family:var(--hand); font-size:1.35rem; border:0; border-bottom:2px solid #7a8fb0; background:transparent; padding:4px 2px; color:var(--pen); }
+.report .res{ font-family:var(--hand); font-size:1.4rem; color:#8e2a22; min-height:30px; margin-top:8px; }
+.ending{ line-height:1.55; font-size:.9rem; }
+.ending h2{ color:#1f6b3a; } .ending h3{ margin:18px 0 6px; font-size:1rem; }
+.ending ol{ padding-left:20px; margin:0; } .ending li{ margin-bottom:6px; }
+
+@media (max-width:640px){
+  .display{ height:620px; font-size:12px; }
+  .icons{ display:none; }
+  .win{ left:6px; right:6px; top:6px; }
+  .split{ grid-template-columns:1fr; grid-template-rows:auto 1fr; }
+  .nav{ display:flex; gap:4px; overflow-x:auto; border-right:0; border-bottom:1px solid #dde2e7; padding:6px; }
+  .nav button{ width:auto; white-space:nowrap; }
+  .nav .sep{ display:none; }
+  .taskbar .tb{ min-width:32px; }
+}
+@media (max-width:980px){ .side{ order:2; } .monitor{ order:1; } }
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="stage">
+  <aside class="side">
+    <div class="tag">
+      <h1>Scellé n° 12 — Affaire Brévant</h1>
+      <p>Poste PC-COMPTA-02 saisi le samedi 15 novembre à 9 h 10, Maison Brévant, fabricant de skis à Voiron.</p>
+      <p>Vendredi soir, un virement de 1 840 000 € vers une société lituanienne a été préparé depuis ce poste, puis validé. Élodie Marchal, la comptable, est mise à pied. Elle jure qu'elle avait quitté les bureaux.</p>
+      <p>Établissez qui a fait le virement, comment, et qui a été manipulé.</p>
+      <div class="row2"><span class="stamp">Urgent</span><span class="timer" id="timer">00:00</span></div>
+    </div>
+
+    <div class="objects" aria-label="Objets trouvés sur le bureau d'Élodie">
+      <div class="frame"><div class="pic" style="background:#e9d6b4">🐕</div><div class="cap">Pixel</div></div>
+      <div class="frame" style="transform:rotate(-3deg)"><div class="pic" style="background:#cfe0d4">🐈</div><div class="cap">Mango</div></div>
+      <div class="badge"><div class="top">BRÉVANT</div><div class="bd"><div class="ph">👤</div>Élodie Marchal<br>Comptabilité<br>Matricule 2016-447</div></div>
+      <div class="mug">5 ans chez Brévant !<br>🎉<br>mars 2024</div>
+    </div>
+
+    <div class="card" aria-live="polite">
+      <h2>Pièces examinées <span class="count" id="count"></span></h2>
+      <p id="progress"></p>
+    </div>
+
+    <div class="card">
+      <h2>Mes déductions</h2>
+      <textarea id="mynotes" aria-label="Mes déductions" placeholder="Note tes hypothèses ici…"></textarea>
+    </div>
+
+    <div class="hintbox" id="hintbox"></div>
+
+    <div class="actions">
+      <button class="btn" id="hintBtn">Demander un indice</button>
+      <button class="btn primary" id="reportBtn">Rédiger le rapport</button>
+      <button class="btn ghost" id="resetBtn">Recommencer</button>
+    </div>
+  </aside>
+
+  <div class="monitor">
+    <div class="bezel"><div class="display" id="display">
+      <div class="brand">BRÉVANT</div>
+      <div class="icons" id="icons"></div>
+      <div id="winHost"></div>
+      <div class="popup" id="popup"></div>
+      <div class="taskbar" id="taskbar"></div>
+      <div id="loginHost"></div>
+    </div></div>
+    <div class="neck"></div><div class="foot"></div>
+  </div>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="rtitle"><div class="report" id="report"></div></div>
+
+<script>
+/* ======================================================
+   DONNÉES
+   ====================================================== */
+const SEEN = ["login","m_fake1","m_fake2","m_real","m_bastien","m_patrick","m_bank","s_reply","d_topatrick","d_frompatrick",
+  "c_general","c_compta","c_hugo","c_bastien","c_patrick","hist","notes","kp","kp_anylink","share",
+  "f_parc","f_badges","f_proc","f_config","f_install","f_session","f_rib","f_kestrel","f_demission","tray"];
+const TOTAL = SEEN.length;
+
+const MAILS = {
+  inbox:[
+    { id:"m_fake1", from:"Claire Brévant <c.brevant@brevant-skis.fr>", to:"Élodie Marchal", when:"Ven. 14/11 17:40", subj:"RE: Opération confidentielle",
+      body:"Élodie,\n\nJe compte sur vous pour que le virement parte ce soir. Le vendeur lituanien ne patientera pas au-delà de 20 h. Patrick est informé, il validera.\n\nMerci de votre discrétion.\n\nClaire Brévant\nPrésidente" },
+    { id:"m_fake2", from:"Claire Brévant <c.brevant@brevant-skis.fr>", to:"Élodie Marchal", when:"Jeu. 13/11 16:10", subj:"Opération confidentielle", att:"RIB_Kestrel_Supply.pdf",
+      body:"Élodie,\n\nNous finalisons en toute confidentialité le rachat d'un fournisseur de carres en acier, Kestrel Supply UAB (Vilnius). Un acompte de 1 840 000 € doit être versé avant vendredi soir. RIB en pièce jointe.\n\nN'en parlez à personne, pas même à l'équipe : l'annonce est prévue en décembre. Je suis injoignable par téléphone pendant le salon.\n\nClaire Brévant\nPrésidente" },
+    { id:"m_real", from:"Claire Brévant <c.brevant@brevant-ski.fr>", to:"Toute l'équipe", when:"Jeu. 13/11 09:02", subj:"Munich 🎿",
+      body:"Coucou tout le monde !\n\nJe suis au salon ISPO jusqu'à mardi. Réseau catastrophique dans les halls, écrivez-moi si besoin, je lirai le soir.\n\nTenez bon, et Élodie, t'oublies pas de m'envoyer le prévisionnel lundi 😘\n\nClaire" },
+    { id:"m_bank", from:"Banque Alpine Pro <info@banque-alpine.fr>", to:"Élodie Marchal", when:"Lun. 10/11 08:00", subj:"Nouveau : validez vos virements depuis l'appli",
+      body:"Bonjour,\n\nLes signataires habilités peuvent désormais valider les virements préparés par leur équipe directement depuis l'application mobile, où qu'ils soient.\n\nBanque Alpine Pro" },
+    { id:"m_patrick", from:"Patrick Lenoir <p.lenoir@brevant-ski.fr>", to:"Toute l'équipe", when:"Ven. 07/11 18:30", subj:"Absence du 10 au 21/11",
+      body:"Bonjour à tous,\n\nJe serai à la Réunion du 10 au 21 novembre. Pour les virements urgents, Élodie prépare et je valide depuis l'appli de la banque.\n\nPatrick Lenoir\nDirecteur administratif et financier" },
+    { id:"m_bastien", from:"Bastien Roche <b.roche@brevant-ski.fr>", to:"Service compta", when:"Lun. 03/11 08:45", subj:"Campagne de mise à jour — postes compta",
+      body:"Bonjour,\n\nJe passe cette semaine sur vos postes pour la mise à jour de l'antivirus et l'installation de l'outil de support. Merci de laisser votre session ouverte quand je viens.\n\nBastien Roche\nDSI" }
+  ],
+  sent:[
+    { id:"s_reply", from:"Élodie Marchal <e.marchal@brevant-ski.fr>", to:"c.brevant@brevant-skis.fr", when:"Ven. 14/11 17:58", subj:"RE: Opération confidentielle",
+      body:"Bonjour Claire,\n\nJe préfère attendre lundi pour en parler avec vous de vive voix. Un montant pareil sans échange, ça me met mal à l'aise, désolée.\n\nBon salon,\nÉlodie" }
+  ],
+  deleted:[
+    { id:"d_frompatrick", from:"Patrick Lenoir <p.lenoir@brevant-ski.fr>", to:"Élodie Marchal", when:"Ven. 14/11 19:52 — supprimé à 19:54", subj:"RE: Virement Kestrel à valider",
+      body:"Validé depuis la plage 🌴\n\nBizarre que Claire ne m'en ait pas parlé directement… On en reparle lundi.\n\nPatrick" },
+    { id:"d_topatrick", from:"Élodie Marchal <e.marchal@brevant-ski.fr>", to:"p.lenoir@brevant-ski.fr", when:"Ven. 14/11 19:43 — supprimé à 19:43", subj:"Virement Kestrel à valider",
+      body:"Patrick,\n\nVirement Kestrel Supply préparé à la demande de Claire (acquisition confidentielle). Peux-tu le valider ce soir depuis l'appli ? C'est urgent.\n\nMerci,\nÉlodie" }
+  ]
+};
+
+const PEOPLE = { "Bastien Roche":"#6b7c93", "Hugo Fabre":"#d4803a", "Élodie Marchal":"#2f7d6b", "Patrick Lenoir":"#7a5aa6", "Claire Brévant":"#b84a5a" };
+const CHANNELS = [
+  { id:"c_general", name:"# général", msgs:[
+    ["day","Lundi 3 novembre"],
+    ["Bastien Roche","09:02","Campagne de mises à jour antivirus cette semaine, je passerai sur vos postes 🙏"],
+    ["day","Vendredi 14 novembre"],
+    ["Hugo Fabre","18:05","Je reste à l'atelier ce soir pour finir le ponçage des protos, fermez pas l'alarme 😅"],
+    ["Hugo Fabre","19:40","Euh… y a un PC allumé en compta et la souris bouge toute seule 👻 je suis juste passé rendre les clés de l'atelier à l'accueil"],
+    ["Hugo Fabre","19:41","Genre des fenêtres s'ouvrent. C'est flippant."],
+    ["Bastien Roche","19:46","C'est sûrement une MAJ Windows, t'inquiète 😉 Rentre chez toi"],
+    ["Hugo Fabre","19:47","ok 😬"]
+  ]},
+  { id:"c_compta", name:"# compta", msgs:[
+    ["day","Jeudi 13 novembre"],
+    ["Élodie Marchal","16:20","Quelqu'un a déjà entendu parler d'un fournisseur « Kestrel Supply UAB » ?"],
+    ["day","Vendredi 14 novembre"],
+    ["Élodie Marchal","17:59","Je file, train à 18:22. Bon week-end tout le monde !"]
+  ]},
+  { id:"c_hugo", name:"Hugo Fabre", dm:true, msgs:[
+    ["day","Mercredi 12 novembre"],
+    ["Hugo Fabre","12:31","Devinette du jour 🧠 : je disparais dès qu'on prononce mon nom. Qui suis-je ?"],
+    ["Élodie Marchal","12:40","Trop facile 😏 Je dis rien, laisse chercher les autres"],
+    ["Hugo Fabre","17:02","T'es la seule à avoir trouvé. Même Bastien a séché, il a répondu « le mot de passe root » 😂"],
+    ["Élodie Marchal","17:05","Ça me donne une idée pour mon KeyPass tiens"]
+  ]},
+  { id:"c_bastien", name:"Bastien Roche", dm:true, msgs:[
+    ["day","Lundi 3 novembre"],
+    ["Bastien Roche","10:05","Je passe sur ton poste pour la MAJ antivirus. Laisse ta session ouverte pendant ta pause, ce sera rapide 😉"],
+    ["Élodie Marchal","10:06","Ok, je descends au café"],
+    ["day","Mercredi 12 novembre"],
+    ["Élodie Marchal","15:12","C'est quoi AnyLink ? Y a une icône verte en bas à droite depuis ta MAJ"],
+    ["Bastien Roche","15:30","Outil de télémaintenance, pour que je puisse vous dépanner à distance. Surtout ne le désinstalle pas, ça casse les MAJ."],
+    ["Élodie Marchal","15:31","Ok… tu peux voir mon écran quand tu veux alors ?"],
+    ["Bastien Roche","15:40","Seulement si tu acceptes la demande qui s'affiche 🙂"]
+  ]},
+  { id:"c_patrick", name:"Patrick Lenoir", dm:true, msgs:[
+    ["day","Vendredi 7 novembre"],
+    ["Patrick Lenoir","17:10","Je décolle lundi pour la Réunion 🌴 Tu gères la clôture ? Pour les virements urgents : tu prépares, je valide depuis l'appli."],
+    ["Élodie Marchal","17:12","Ça marche, bonnes vacances !"],
+    ["day","Jeudi 13 novembre"],
+    ["Élodie Marchal","16:25","Patrick, Claire t'a parlé d'un rachat en Lituanie ?"]
+  ]}
+];
+
+const HISTORY = [
+  ["Ven. 14/11 19:42","Banque Alpine Pro — Virement émis, en attente de validation"],
+  ["Ven. 14/11 19:41","Banque Alpine Pro — Nouveau bénéficiaire ajouté : Kestrel Supply UAB"],
+  ["Ven. 14/11 19:39","Proton Mail — Connexion"],
+  ["Ven. 14/11 19:37","Banque Alpine Pro — Espace entreprise (session mémorisée)"],
+  ["Ven. 14/11 17:54","SNCF Connect — Voiron → Lyon Part-Dieu, départ 18:22"],
+  ["Jeu. 13/11 16:34","Registre des entreprises de Lituanie — « Kestrel Supply » : aucun résultat"],
+  ["Jeu. 13/11 16:31","Qui a enregistré ce domaine ? — date de création : 10/11/2025"],
+  ["Jeu. 13/11 16:30","Maison Brévant — skis de Chartreuse depuis 1962"],
+  ["Sam. 01/11 21:14","Modèle de lettre de démission — gratuit"]
+];
+
+/* Système de fichiers */
+const N = {
+  docs:{ label:"Documents", icon:"📁", items:["f_rappro","f_demission","f_kestrel"] },
+  dl:{ label:"Téléchargements", icon:"⬇️", items:["f_rib","f_setup"] },
+  c:{ label:"Disque local (C:)", icon:"💽", items:["c_pd","c_pf","c_users","c_win"] },
+  c_pf:{ label:"Program Files", icon:"📁", items:["pf_any","pf_off"] },
+  pf_any:{ label:"AnyLink", icon:"📁", items:["f_anyexe"] },
+  pf_off:{ label:"Office", icon:"📁", items:[] },
+  c_users:{ label:"Utilisateurs", icon:"📁", items:["u_em"] },
+  u_em:{ label:"emarchal", icon:"📁", items:["docs","dl"] },
+  c_win:{ label:"Windows", icon:"📁", denied:true, items:[] },
+  c_pd:{ label:"ProgramData", icon:"📁", hidden:true, items:["pd_any","pd_ms"] },
+  pd_any:{ label:"AnyLink", icon:"📁", items:["f_config","f_install"] },
+  pd_ms:{ label:"Microsoft", icon:"📁", items:[] },
+  net:{ label:"Commun (\\\\SRV-BREVANT)", icon:"🌐", net:true, items:["n_dsi","n_secu","n_compta"] },
+  n_dsi:{ label:"DSI", icon:"📁", items:["f_parc"] },
+  n_secu:{ label:"Sécurité", icon:"📁", items:["f_badges"] },
+  n_compta:{ label:"Compta", icon:"📁", items:["f_proc"] },
+  trash:{ label:"Corbeille", icon:"🗑️", items:["f_session","f_pixel"] }
+};
+const F = {
+  f_rappro:{ name:"Rapprochement bancaire octobre.xlsx", icon:"📊", date:"31/10/2025 17:02", type:"sheet",
+    rows:[["Date","Libellé","Débit","Crédit","Pointé"],["02/10","Acier Dauphiné — facture 8812","42 300,00","","✓"],["09/10","Client Sport 2000 Chambéry","","18 450,00","✓"],["15/10","Urssaf","31 912,40","","✓"],["22/10","Résines Isère","12 780,00","","✓"],["30/10","Salaires octobre","96 204,11","","✓"]] },
+  f_demission:{ name:"Lettre démission (brouillon).docx", icon:"📄", date:"01/11/2025 21:30", type:"paper", seen:"f_demission",
+    text:"Voiron, le 1er novembre 2025\n\nMadame la Présidente,\n\nJe vous informe de ma décision de quitter mes fonctions de comptable au sein de la Maison Brévant.\n\nCette décision n'a pas été facile. Depuis l'arrivée des nouveaux outils, j'ai le sentiment de\n\n[brouillon non terminé — en parler à Claire après la clôture ? pas sûre du tout]" },
+  f_kestrel:{ name:"Kestrel — vérifs.txt", icon:"📝", date:"13/11/2025 16:40", type:"text", seen:"f_kestrel",
+    text:"Jeudi 13/11 — 16:40\n\n— Le mail de « Claire » me vouvoie ?? Elle me tutoie depuis six ans.\n— Elle signe « Présidente ». Jamais vu ça.\n— L'adresse d'expédition : un truc cloche. Regarder les lettres une par une.\n— Le domaine a été créé le 10/11. Il y a quatre jours.\n— Kestrel Supply UAB n'existe pas au registre lituanien.\n\n→ Arnaque au président. Je ne fais RIEN. J'en parle à Claire lundi.\n\nMais qui savait que Claire serait à Munich ET Patrick à la Réunion cette semaine précise ?" },
+  f_rib:{ name:"RIB_Kestrel_Supply.pdf", icon:"📕", date:"14/11/2025 19:38", type:"paper", seen:"f_rib",
+    text:"RELEVÉ D'IDENTITÉ BANCAIRE\n\nTitulaire : KESTREL SUPPLY UAB\nAdresse : Gedimino pr. 9, Vilnius\n\nIBAN : LT72 3250 0417 8823 0914\nBIC : REVOLT21\n\n(Fichier enregistré dans Téléchargements le vendredi 14/11 à 19:38)" },
+  f_setup:{ name:"Setup_AnyLink_6.2.exe", icon:"⚙️", date:"03/11/2025 10:09", type:"text", text:"Programme d'installation — AnyLink 6.2\nÉditeur : AnyLink Software GmbH\nTéléchargé le 03/11/2025 à 10:09" },
+  f_anyexe:{ name:"AnyLink.exe", icon:"🟢", date:"03/11/2025 10:12", type:"text", text:"AnyLink — logiciel de prise en main à distance\nVersion 6.2\nInstallé le 03/11/2025" },
+  f_config:{ name:"config.ini", icon:"📝", date:"03/11/2025 10:12", type:"text", seen:"f_config",
+    text:"[Acces]\nAccesSansSurveillance=1\nConfirmationUtilisateur=0\nMasquerNotifications=1\n\n[AppareilsAutorises]\nAppareil1=LAPTOP-7F3K2\n\n[Journal]\nFichier=session.log" },
+  f_install:{ name:"install.log", icon:"📝", date:"03/11/2025 10:12", type:"text", seen:"f_install",
+    text:"03/11/2025 10:11:47  Installation démarrée (session locale : emarchal)\n03/11/2025 10:12:30  Accès sans surveillance : ACTIVÉ\n03/11/2025 10:12:31  Confirmation utilisateur : DÉSACTIVÉE\n03/11/2025 10:12:31  Appareil autorisé ajouté : LAPTOP-7F3K2\n03/11/2025 10:12:40  Installation terminée" },
+  f_session:{ name:"session.log", icon:"📝", date:"Supprimé le 14/11/2025 19:54", type:"text", seen:"f_session",
+    text:"07/11/2025 12:31:05  Session entrante — LAPTOP-7F3K2 — acceptée automatiquement\n07/11/2025 12:34:50  Session fermée\n\n14/11/2025 19:36:02  Session entrante — LAPTOP-7F3K2 — acceptée automatiquement\n14/11/2025 19:37:15  Lancement : navigateur\n14/11/2025 19:38:02  Transfert de fichier vers ce poste : RIB_Kestrel_Supply.pdf\n14/11/2025 19:42:48  Lancement : Courrier\n14/11/2025 19:43:40  Session fermée\n\n14/11/2025 19:53:10  Session entrante — LAPTOP-7F3K2 — acceptée automatiquement\n14/11/2025 19:53:30  Lancement : Courrier\n14/11/2025 19:54:40  Lancement : Explorateur de fichiers" },
+  f_pixel:{ name:"pixel_flou.jpg", icon:"🖼️", date:"Supprimé le 06/11/2025 12:02", type:"img", emoji:"🐕", text:"Pixel qui bouge encore sur la photo." },
+  f_parc:{ name:"Parc_informatique.xlsx", icon:"📊", date:"02/10/2025 11:20", type:"sheet", seen:"f_parc",
+    rows:[["Nom d'appareil","Type","Attribué à","Service"],["PC-COMPTA-01","Fixe","P. Lenoir","Direction financière"],["PC-COMPTA-02","Fixe","É. Marchal","Comptabilité"],["LAPTOP-DG01","Portable","C. Brévant","Direction"],["LAPTOP-7F3K7","Portable","H. Fabre","Atelier (stagiaire)"],["PC-ATELIER-03","Fixe","Partagé","Atelier"],["LAPTOP-7F3K2","Portable personnel autorisé","B. Roche","DSI"],["LAPTOP-AC11","Portable","S. Petit","Accueil"]] },
+  f_badges:{ name:"Badges_2025-11-14.csv", icon:"📊", date:"15/11/2025 06:00", type:"sheet", seen:"f_badges",
+    rows:[["Nom","Zone","Entrée","Sortie"],["J. Morin","Atelier","07:02","15:31"],["S. Petit","Accueil","07:58","17:04"],["É. Marchal","Bureaux","08:31","18:07"],["B. Roche","Bureaux","08:55","17:31"],["H. Fabre","Atelier","13:28","20:15"],["H. Fabre","Bureaux","19:38","19:44"],["P. Lenoir","—","(congés)","—"],["C. Brévant","—","(déplacement)","—"]] },
+  f_proc:{ name:"Procédure_virements.pdf", icon:"📕", date:"15/01/2025 09:00", type:"paper", seen:"f_proc",
+    text:"PROCÉDURE — VIREMENTS FOURNISSEURS\n\nTout virement supérieur à 50 000 € suit deux étapes :\n\n1. Préparation par la comptabilité, depuis un poste du service comptable, dans l'espace entreprise Banque Alpine Pro.\n\n2. Validation par un signataire habilité : le DAF (P. Lenoir) ou, en son absence, la Présidente (C. Brévant). La validation peut se faire depuis l'application mobile.\n\nAucun virement ne part sans ces deux étapes." }
+};
+
+const KP = [
+  { id:"kp1", title:"Partage Commun", user:"emarchal", pass:"Chartreuse#38", url:"\\\\SRV-BREVANT\\Commun", note:"" },
+  { id:"kp2", title:"Banque Alpine Pro", user:"BREVANT-ENT / emarchal", pass:"(pas besoin, session mémorisée sur ce PC)", url:"pro.banque-alpine.fr", note:"Pratique : je n'ai plus à me reconnecter." },
+  { id:"kp3", title:"Wi-Fi atelier", user:"Brevant-Atelier", pass:"Planche2Ski!", url:"", note:"" },
+  { id:"kp4", title:"AnyLink ??", user:"", pass:"", url:"", note:"12/11 — Icône verte apparue après la MAJ de Bastien. Il dit que je dois accepter chaque connexion.\n\nSauf que je n'ai jamais rien eu à accepter. Et le 07/11, en rentrant de déjeuner, mon navigateur était ouvert sur une page que je n'avais pas ouverte.\n\nÀ vérifier.", seen:"kp_anylink" }
+];
+
+/* ======================================================
+   ÉTAT
+   ====================================================== */
+const KEY = "pc-elodie-v1";
+function fresh(){ return { login:false, kp:false, share:false, seen:[], hints:0, hintStage:{}, refused:0, solved:false, start:Date.now(), end:null, fails:0, lockUntil:0, notes:"" }; }
+function load(){ try{ const r = localStorage.getItem(KEY); if(r) return Object.assign(fresh(), JSON.parse(r)); }catch(e){} return fresh(); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+let S = load(); save();
+function see(id){ if(!id || !SEEN.includes(id) || S.seen.includes(id)) return; S.seen.push(id); save(); renderProgress(); }
+function renderProgress(){
+  document.getElementById("count").textContent = `(${S.seen.length}/${TOTAL})`;
+  const left = TOTAL - S.seen.length;
+  document.getElementById("progress").textContent = left ? `Encore ${left} élément${left>1?"s":""} à dénicher. Personne ne notera pour toi.` : "Tout a été examiné.";
+}
+function fmt(ms){ const s = Math.floor(ms/1000), h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60;
+  return (h? h+":"+String(m).padStart(2,"0") : String(m).padStart(2,"0")) + ":" + String(x).padStart(2,"0"); }
+setInterval(() => { document.getElementById("timer").textContent = fmt((S.end||Date.now()) - S.start); }, 1000);
+const notesEl = document.getElementById("mynotes");
+notesEl.value = S.notes || ""; notesEl.addEventListener("input", () => { S.notes = notesEl.value; save(); });
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ======================================================
+   SESSION WINDOWS
+   ====================================================== */
+const loginHost = document.getElementById("loginHost");
+let loginTimer = null;
+function renderLogin(){
+  if(S.login){ loginHost.innerHTML = ""; return; }
+  loginHost.innerHTML = `<div class="login" id="lg">
+    <div class="clock">09:12<small>samedi 15 novembre</small></div>
+    <div class="avatar">É</div>
+    <h2>Élodie Marchal</h2>
+    <input id="lpw" type="password" placeholder="Mot de passe" aria-label="Mot de passe" autocomplete="off">
+    <button class="lk" id="lhint">Afficher l'indice de mot de passe</button>
+    <div class="msg" id="lmsg"></div>
+  </div>`;
+  const inp = document.getElementById("lpw"), msg = document.getElementById("lmsg");
+  document.getElementById("lhint").onclick = () => { msg.textContent = "Indice : mon chien + l'année où je suis arrivée chez Brévant"; };
+  inp.onkeydown = e => { if(e.key === "Enter") tryLogin(); };
+  checkLoginLock();
+}
+function checkLoginLock(){
+  const inp = document.getElementById("lpw"), msg = document.getElementById("lmsg"); if(!inp) return;
+  const left = Math.ceil((S.lockUntil - Date.now())/1000);
+  if(left > 0){ inp.disabled = true; msg.textContent = `Trop de tentatives. Réessayez dans ${left} s.`; clearTimeout(loginTimer); loginTimer = setTimeout(checkLoginLock, 1000); }
+  else { inp.disabled = false; if(S.fails && !msg.textContent.startsWith("Indice")) msg.textContent = "Mot de passe incorrect."; }
+}
+function tryLogin(){
+  const inp = document.getElementById("lpw");
+  if(inp.value.trim().toLowerCase() === "pixel2019"){ S.login = true; save(); see("login"); renderLogin(); return; }
+  S.fails++; if(S.fails % 3 === 0) S.lockUntil = Date.now() + 15000 * (S.fails/3); save();
+  const lg = document.getElementById("lg"); inp.value = ""; lg.classList.add("shake"); setTimeout(() => lg.classList.remove("shake"), 420);
+  document.getElementById("lmsg").textContent = "Mot de passe incorrect."; checkLoginLock();
+}
+
+/* ======================================================
+   BUREAU, BARRE DES TÂCHES, FENÊTRES
+   ====================================================== */
+const APPS = {
+  explorer:{ name:"Explorateur", icon:"🗂️", render:renderExplorer },
+  mail:{ name:"Courrier", icon:"✉️", render:renderMail },
+  chat:{ name:"Brévant Chat", icon:"💬", render:renderChat },
+  web:{ name:"Navigateur", icon:"🌐", render:renderWeb },
+  kp:{ name:"KeyPass", icon:"🔑", render:renderKP },
+  notes:{ name:"Pense-bêtes", icon:"🗒️", render:renderNotes }
+};
+const DESK = [["explorer","Ce PC"],["trash","Corbeille"],["mail","Courrier"],["chat","Brévant Chat"],["web","Navigateur"],["kp","KeyPass"],["notes","Pense-bêtes"]];
+let current = null;
+function renderDesk(){
+  document.getElementById("icons").innerHTML = DESK.map(([id,label]) =>
+    `<button class="dicon" data-open="${id}"><span>${id==="trash"?"🗑️":APPS[id].icon}</span>${label}</button>`).join("");
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+    if(b.dataset.open==="trash"){ EX.path = ["trash"]; EX.file = null; open("explorer"); } else open(b.dataset.open);
+  });
+  renderTaskbar();
+}
+function renderTaskbar(){
+  document.getElementById("taskbar").innerHTML = `<button class="tb" aria-label="Démarrer">🪟</button>` +
+    ["explorer","mail","chat","web","kp","notes"].map(id => `<button class="tb ${current===id?"on":""}" data-tb="${id}" aria-label="${APPS[id].name}">${APPS[id].icon}</button>`).join("") +
+    `<div class="tray"><button id="anyBtn" aria-label="Icône verte de la zone de notification"><span class="anydot"></span></button><span aria-label="Pas de réseau">🚫📶</span><span>09:12<br>15/11/2025</span></div>`;
+  document.querySelectorAll("[data-tb]").forEach(b => b.onclick = () => open(b.dataset.tb));
+  document.getElementById("anyBtn").onclick = togglePopup;
+}
+function togglePopup(){
+  const p = document.getElementById("popup");
+  if(p.style.display === "block"){ p.style.display = "none"; return; }
+  p.innerHTML = `<b>AnyLink 6.2</b><br>Cet appareil : PC-COMPTA-02<br>ID : 417 882 309<br>État : prêt, en attente de connexion<br>Accès sans surveillance : <b style="color:#1faa59">activé</b><br><span style="color:#888">Paramètres protégés par l'administrateur.</span>`;
+  p.style.display = "block"; see("tray");
+}
+function open(id){
+  current = id; document.getElementById("popup").style.display = "none";
+  document.getElementById("winHost").innerHTML = `<div class="win" role="dialog" aria-label="${APPS[id].name}">
+    <div class="titlebar"><span>${APPS[id].icon}</span><span class="ttl" id="wttl">${APPS[id].name}</span><button id="wclose" aria-label="Fermer">✕</button></div>
+    <div class="wbody" id="wbody"></div></div>`;
+  document.getElementById("wclose").onclick = () => { current = null; document.getElementById("winHost").innerHTML = ""; renderTaskbar(); };
+  renderTaskbar(); APPS[id].render();
+}
+const body = () => document.getElementById("wbody");
+const setTitle = t => { const el = document.getElementById("wttl"); if(el) el.textContent = t; };
+
+/* ---------- Explorateur ---------- */
+const EX = { path:["docs"], hidden:false, file:null };
+function renderExplorer(){
+  const cur = EX.path[EX.path.length-1], node = N[cur];
+  const navs = [["docs","📁 Documents"],["dl","⬇️ Téléchargements"],["sep"],["c","💽 Disque local (C:)"],["net","🌐 Commun (réseau)"],["sep"],["trash","🗑️ Corbeille"]];
+  const pathTxt = EX.path.map(p => N[p].label).join(" › ") + (EX.file ? " › " + F[EX.file].name : "");
+  let main = "";
+  if(EX.file) main = fileView(EX.file);
+  else if(node.net && !S.share) main = shareLogin();
+  else if(node.denied) main = `<div class="empty">Accès refusé. Vous n'avez pas l'autorisation d'ouvrir ce dossier.</div>`;
+  else {
+    const items = node.items.filter(k => EX.hidden || !(N[k] && N[k].hidden));
+    main = items.length ? `<table class="files"><tr><th>Nom</th><th>Modifié le</th></tr>${items.map(k => {
+      const isF = !!F[k], it = isF ? F[k] : N[k];
+      return `<tr class="it ${!isF && it.hidden?"hid":""}" data-k="${k}" tabindex="0"><td>${it.icon} ${esc(isF?it.name:it.label)}</td><td>${isF?it.date:""}</td></tr>`; }).join("")}</table>`
+      : `<div class="empty">Ce dossier est vide.</div>`;
+  }
+  body().innerHTML = `<div class="split"><nav class="nav">${navs.map(([k,l]) => k==="sep" ? `<div class="sep"></div>` : `<button data-nav="${k}" class="${EX.path[0]===k?"on":""}">${l}</button>`).join("")}</nav>
+    <div class="main"><div class="toolbar"><button id="exBack" aria-label="Précédent">←</button><span class="path">${esc(pathTxt)}</span>
+    <label><input type="checkbox" id="exHid" ${EX.hidden?"checked":""}> Éléments masqués</label></div>${main}</div></div>`;
+  setTitle("Explorateur de fichiers");
+  body().querySelectorAll("[data-nav]").forEach(b => b.onclick = () => { EX.path = [b.dataset.nav]; EX.file = null; renderExplorer(); });
+  document.getElementById("exBack").onclick = () => { if(EX.file) EX.file = null; else if(EX.path.length > 1) EX.path.pop(); renderExplorer(); };
+  document.getElementById("exHid").onchange = e => { EX.hidden = e.target.checked; renderExplorer(); };
+  body().querySelectorAll("[data-k]").forEach(r => { const go = () => { const k = r.dataset.k; if(F[k]) EX.file = k; else EX.path.push(k); renderExplorer(); };
+    r.onclick = go; r.onkeydown = e => { if(e.key==="Enter") go(); }; });
+  const sf = document.getElementById("shareGo"); if(sf) wireShare();
+  if(EX.file) see(F[EX.file].seen);
+}
+function fileView(k){
+  const f = F[k];
+  let c = "";
+  if(f.type==="text") c = `<pre>${esc(f.text)}</pre>`;
+  else if(f.type==="paper") c = `<div class="paper">${esc(f.text)}</div>`;
+  else if(f.type==="sheet") c = `<div style="overflow-x:auto"><table class="sheet">${f.rows.map((r,i) => `<tr>${r.map(x => i? `<td>${esc(x)}</td>` : `<th>${esc(x)}</th>`).join("")}</tr>`).join("")}</table></div>`;
+  else if(f.type==="img") c = `<div style="height:220px;display:grid;place-items:center;font-size:5rem;background:#ddd;filter:blur(3px)">${f.emoji}</div><p>${esc(f.text)}</p>`;
+  return `<div class="viewer"><div class="meta">${esc(f.name)} — ${esc(f.date)}</div>${c}</div>`;
+}
+function shareLogin(){
+  return `<div class="dlg"><h3>Sécurité Windows</h3><p>Entrez vos informations d'identification pour vous connecter à \\\\SRV-BREVANT\\Commun</p>
+    <input id="shU" placeholder="Nom d'utilisateur" autocomplete="off"><input id="shP" type="password" placeholder="Mot de passe" autocomplete="off">
+    <div class="err" id="shE"></div><button class="pbtn" id="shareGo">OK</button></div>`;
+}
+function wireShare(){
+  const tryIt = () => {
+    const u = document.getElementById("shU").value.trim().toLowerCase().replace(/^brevant\\/, ""), p = document.getElementById("shP").value.trim();
+    if(u === "emarchal" && p === "Chartreuse#38"){ S.share = true; save(); see("share"); renderExplorer(); }
+    else document.getElementById("shE").textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+  };
+  document.getElementById("shareGo").onclick = tryIt;
+  document.getElementById("shP").onkeydown = e => { if(e.key==="Enter") tryIt(); };
+}
+
+/* ---------- Courrier ---------- */
+const ML = { folder:"inbox", open:null };
+function renderMail(){
+  const folders = [["inbox","📥 Boîte de réception"],["sent","📤 Éléments envoyés"],["deleted","🗑️ Éléments supprimés"]];
+  const list = MAILS[ML.folder];
+  let main;
+  if(ML.open){
+    const m = list.find(x => x.id===ML.open);
+    main = `<div class="toolbar"><button id="mBack">← Retour</button></div><div class="mail"><h3>${esc(m.subj)}</h3>
+      <div class="hdr">De : ${esc(m.from)}<br>À : ${esc(m.to)}<br>${esc(m.when)}</div><div class="body">${esc(m.body)}</div>${m.att?`<div class="att">📎 ${m.att}</div>`:""}</div>`;
+  } else main = `<div class="mlist">${list.map(m => `<button class="m" data-m="${m.id}"><b>${esc(m.from.split(" <")[0])}<span>${esc(m.when)}</span></b><i>${esc(m.subj)}</i><small>${esc(m.body.split("\n").filter(Boolean)[0])}</small></button>`).join("")}</div>`;
+  body().innerHTML = `<div class="split"><nav class="nav">${folders.map(([k,l]) => `<button data-f="${k}" class="${ML.folder===k?"on":""}">${l}</button>`).join("")}</nav><div class="main">${main}</div></div>`;
+  setTitle("Courrier — e.marchal@brevant-ski.fr");
+  body().querySelectorAll("[data-f]").forEach(b => b.onclick = () => { ML.folder = b.dataset.f; ML.open = null; renderMail(); });
+  body().querySelectorAll("[data-m]").forEach(b => b.onclick = () => { ML.open = b.dataset.m; renderMail(); });
+  const bk = document.getElementById("mBack"); if(bk) bk.onclick = () => { ML.open = null; renderMail(); };
+  if(ML.open) see(ML.open);
+}
+
+/* ---------- Chat ---------- */
+let CH = "c_general";
+function renderChat(){
+  const ch = CHANNELS.find(c => c.id===CH);
+  const msgs = ch.msgs.map(m => m[0]==="day" ? `<div class="day">${m[1]}</div>` :
+    `<div class="msg"><div class="av" style="background:${PEOPLE[m[0]]}">${m[0].split(" ").map(w=>w[0]).join("")}</div><div><b>${m[0]}<span>${m[1]}</span></b><p>${esc(m[2])}</p></div></div>`).join("");
+  body().innerHTML = `<div class="split"><nav class="nav">${CHANNELS.filter(c=>!c.dm).map(c => `<button data-c="${c.id}" class="${CH===c.id?"on":""}">${c.name}</button>`).join("")}<div class="sep"></div>
+    ${CHANNELS.filter(c=>c.dm).map(c => `<button data-c="${c.id}" class="${CH===c.id?"on":""}">👤 ${c.name}</button>`).join("")}</nav><div class="main"><div class="chat">${msgs}</div></div></div>`;
+  setTitle("Brévant Chat — " + ch.name);
+  body().querySelectorAll("[data-c]").forEach(b => b.onclick = () => { CH = b.dataset.c; renderChat(); });
+  see(CH);
+}
+
+/* ---------- Navigateur ---------- */
+let webOff = null;
+function renderWeb(){
+  body().innerHTML = `<div class="main" style="height:100%"><div class="toolbar"><span class="path">edge://history</span></div>
+    ${webOff ? `<div class="offline">🚫 Aucune connexion Internet.<br><br>Le poste a été débranché du réseau lors de la saisie.<br><br><button class="pbtn" id="wBack">Retour à l'historique</button></div>` :
+    `<table class="files"><tr><th>Heure</th><th>Page</th></tr>${HISTORY.map((h,i) => `<tr class="it" data-h="${i}"><td>${h[0]}</td><td>${esc(h[1])}</td></tr>`).join("")}</table>`}</div>`;
+  setTitle("Navigateur — Historique");
+  body().querySelectorAll("[data-h]").forEach(r => r.onclick = () => { webOff = true; renderWeb(); });
+  const wb = document.getElementById("wBack"); if(wb) wb.onclick = () => { webOff = null; renderWeb(); };
+  see("hist");
+}
+
+/* ---------- KeyPass ---------- */
+let KPopen = null;
+function renderKP(){
+  if(!S.kp){
+    body().innerHTML = `<div class="kp"><div class="dlg"><h3>🔑 KeyPass — Coffre verrouillé</h3><p>Base : emarchal.kdbx<br>Saisissez le mot de passe maître.</p>
+      <input id="kpP" type="password" autocomplete="off" placeholder="Mot de passe maître"><div class="err" id="kpE"></div><button class="pbtn" id="kpGo">Déverrouiller</button></div></div>`;
+    setTitle("KeyPass");
+    const tryIt = () => { const v = document.getElementById("kpP").value.trim().toLowerCase().replace(/^le /,"");
+      if(v === "silence"){ S.kp = true; save(); see("kp"); renderKP(); } else document.getElementById("kpE").textContent = "Mot de passe maître incorrect."; };
+    document.getElementById("kpGo").onclick = tryIt; document.getElementById("kpP").onkeydown = e => { if(e.key==="Enter") tryIt(); };
+    return;
+  }
+  if(KPopen){
+    const e = KP.find(x => x.id===KPopen);
+    body().innerHTML = `<div class="kp"><div class="toolbar" style="background:#2a3036;border-color:#3b434b"><button id="kpBack">← Retour</button></div><div class="viewer">
+      <h3 style="margin:0 0 10px">${esc(e.title)}</h3><pre>Nom d'utilisateur : ${esc(e.user||"—")}\nMot de passe      : ${esc(e.pass||"—")}\nURL               : ${esc(e.url||"—")}\n\nNotes :\n${esc(e.note||"—")}</pre></div></div>`;
+    document.getElementById("kpBack").onclick = () => { KPopen = null; renderKP(); };
+    see(e.seen); return;
+  }
+  body().innerHTML = `<div class="kp"><table class="files"><tr><th>Titre</th><th>Utilisateur</th></tr>${KP.map(e => `<tr class="it" data-e="${e.id}"><td>🔐 ${esc(e.title)}</td><td>${esc(e.user)}</td></tr>`).join("")}</table></div>`;
+  setTitle("KeyPass — emarchal.kdbx");
+  body().querySelectorAll("[data-e]").forEach(r => r.onclick = () => { KPopen = r.dataset.e; renderKP(); });
+}
+
+/* ---------- Pense-bêtes ---------- */
+function renderNotes(){
+  body().innerHTML = `<div class="sticky"><div>KeyPass : la réponse à la devinette de Hugo 🙃<br>(un seul mot, sans article)</div><div>Véto Pixel mardi 18 h<br>+ croquettes Mango</div><div>Prévisionnel pour Claire → LUNDI !!<br>Clôture le 28</div></div>`;
+  setTitle("Pense-bêtes"); see("notes");
+}
+
+/* ======================================================
+   INDICES
+   ====================================================== */
+const HINTS = {
+  login:["Le mot de passe combine deux objets posés sur le bureau d'Élodie. Relis l'indice : un seul des deux animaux est un chien.","L'année d'arrivée n'est écrite nulle part directement. Le mug fête un anniversaire : fais le calcul, et méfie-toi du matricule.","Mot de passe : Pixel2019."],
+  kp:["Un pense-bête explique comment Élodie a choisi le mot de passe de KeyPass.","La devinette est dans la conversation privée avec Hugo. Qu'est-ce qui disparaît dès qu'on le nomme ?","Mot de passe maître : silence."],
+  share:["Le dossier réseau Commun demande des identifiants. KeyPass les connaît.","Dans l'Explorateur, clique sur Commun (réseau) et recopie l'utilisateur et le mot de passe de la fiche « Partage Commun »."],
+  traces:["L'icône verte de la barre des tâches cache un logiciel. Ses fichiers les plus intéressants ne sont pas visibles par défaut.","Dans l'Explorateur, coche « Éléments masqués » puis va dans Disque local (C:). Et fouille la Corbeille : quelqu'un a effacé un journal."],
+  final:["Le nom d'appareil du journal ressemble beaucoup à un autre. Compare-les caractère par caractère dans le parc informatique.","Pour la validation finale : lis la procédure des virements, puis le dossier des éléments supprimés du Courrier.","Pour le domaine : compare, lettre par lettre, l'adresse des vrais mails de Claire et celle des mails suspects."]
+};
+function stage(){ if(!S.login) return "login"; if(!S.kp) return "kp"; if(!S.share) return "share";
+  if(!S.seen.includes("f_session") || !S.seen.includes("f_config")) return "traces"; return "final"; }
+document.getElementById("hintBtn").onclick = () => {
+  const st = stage(), i = S.hintStage[st] || 0, list = HINTS[st], h = list[Math.min(i, list.length-1)];
+  if(i < list.length){ S.hintStage[st] = i+1; S.hints++; save(); }
+  const box = document.getElementById("hintbox");
+  box.innerHTML = `<small>Indice ${Math.min(i+1,list.length)}/${list.length} pour cette étape — ${S.hints} demandé${S.hints>1?"s":""} au total</small>${esc(h)}`;
+  box.style.display = "block";
+};
+
+/* ======================================================
+   RAPPORT
+   ====================================================== */
+function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim(); }
+const QUESTIONS = [
+  { id:"who", label:"1. Qui a préparé le virement frauduleux ?", ph:"Nom de la personne",
+    ok:v => /\b(bastien|roche)\b/.test(v) && !/(hugo|fabre|elodie|marchal|patrick|lenoir|claire)/.test(v) },
+  { id:"device", label:"2. Depuis quel appareil ? (nom exact)", ph:"Nom de l'appareil",
+    ok:v => /7f3k2/.test(v.replace(/ /g,"")) },
+  { id:"time", label:"3. Vendredi, à quelle heure la prise de contrôle a-t-elle commencé ?", ph:"hh:mm",
+    ok:v => v.replace(/[^0-9]/g,"").slice(0,4) === "1936" },
+  { id:"domain", label:"4. Quel nom de domaine a servi à se faire passer pour la présidente ?", ph:"exemple.fr",
+    ok:v => /brevant ?skis/.test(v) },
+  { id:"valid", label:"5. Qui a donné la validation finale, sans savoir qu'il était manipulé ?", ph:"Nom de la personne",
+    ok:v => /\b(patrick|lenoir)\b/.test(v) }
+];
+const modal = document.getElementById("modal"), rep = document.getElementById("report");
+document.getElementById("reportBtn").onclick = openReport;
+function openReport(){
+  if(S.solved){ showEnding(); modal.classList.add("open"); return; }
+  rep.innerHTML = `<h2 id="rtitle">Rapport d'enquête — Affaire Brévant</h2>
+    <p class="sub">Le juge d'instruction ne valide le rapport que si les cinq points sont exacts. Il ne dira pas lesquels sont faux.${S.refused?` Rapports déjà refusés : ${S.refused}.`:""}</p>
+    ${QUESTIONS.map(q => `<div class="q"><label for="q_${q.id}">${q.label}</label><input id="q_${q.id}" autocomplete="off" placeholder="${q.ph}"></div>`).join("")}
+    <div class="res" id="res"></div>
+    <div class="actions" style="margin-top:10px"><button class="btn primary" id="submit">Transmettre au juge</button><button class="btn ghost" id="close">Continuer l'enquête</button></div>`;
+  modal.classList.add("open");
+  document.getElementById("close").onclick = () => modal.classList.remove("open");
+  document.getElementById("submit").onclick = () => {
+    const vals = QUESTIONS.map(q => norm(document.getElementById("q_"+q.id).value));
+    if(vals.some(v => !v)){ document.getElementById("res").textContent = "Le rapport est incomplet."; return; }
+    const good = QUESTIONS.filter((q,i) => q.ok(vals[i])).length;
+    if(good === QUESTIONS.length){ S.solved = true; S.end = Date.now(); save(); showEnding(); }
+    else { S.refused++; save(); document.getElementById("res").textContent = `Rapport refusé : ${good} point${good>1?"s":""} sur 5 ${good>1?"tiennent":"tient"} la route. (Refus n° ${S.refused})`; }
+  };
+}
+function rank(){
+  const min = (S.end - S.start)/60000, pts = 100 - S.hints*8 - S.refused*10 - Math.max(0, min-35)*0.8;
+  return pts >= 85 ? "Experte en cybercriminalité" : pts >= 65 ? "Enquêteur de la brigade financière" : pts >= 40 ? "Analyste junior" : "Stagiaire prometteur";
+}
+function showEnding(){
+  rep.innerHTML = `<div class="ending"><h2 id="rtitle">Élodie est innocente</h2>
+    <p>Lundi matin, Bastien Roche est interpellé à son domicile. Sur son portable personnel, LAPTOP-7F3K2, les enquêteurs retrouvent AnyLink, le brouillon des faux mails et la facture du nom de domaine brevant-skis.fr, créé le 10 novembre.</p>
+    <p>La banque lituanienne gèle une partie des fonds. Élodie est réintégrée. Elle n'envoie pas sa lettre de démission, du moins pas tout de suite.</p>
+    <h3>Ce qui s'est passé</h3>
+    <ol>
+      <li>Le 3 novembre, sous prétexte d'une mise à jour, Bastien installe AnyLink sur le poste d'Élodie, réglé pour accepter son portable sans rien demander. Le 7, il fait un essai pendant qu'elle déjeune.</li>
+      <li>Le 10, il crée brevant-skis.fr, un « s » de plus que le vrai domaine. Il sait que Claire part à Munich et Patrick à la Réunion.</li>
+      <li>Le 13, les faux mails de « Claire » arrivent. Élodie flaire l'arnaque et refuse vendredi à 17:58, avant de partir prendre son train.</li>
+      <li>À 19:36, Bastien prend le contrôle à distance. Il utilise la session bancaire mémorisée, prépare le virement, puis écrit à Patrick au nom d'Élodie. Hugo voit la souris bouger à 19:40.</li>
+      <li>Patrick valide depuis la plage à 19:52. À 19:53, Bastien revient effacer la réponse et le journal… qui finit dans la Corbeille.</li>
+    </ol>
+    <p>Hugo, dernier à badger, était un témoin. LAPTOP-7F3K7 était son portable, pas celui du coupable. Patrick a été manipulé.</p>
+    <p><b>Temps : ${fmt(S.end - S.start)} — pièces examinées : ${S.seen.length}/${TOTAL} — indices demandés : ${S.hints} — rapports refusés : ${S.refused}</b></p>
+    <p><b>Grade : ${rank()}</b></p>
+    <div class="actions"><button class="btn primary" id="again">Rejouer</button><button class="btn ghost" id="close2">Fermer</button></div></div>`;
+  document.getElementById("again").onclick = reset;
+  document.getElementById("close2").onclick = () => modal.classList.remove("open");
+}
+modal.addEventListener("click", e => { if(e.target===modal) modal.classList.remove("open"); });
+document.addEventListener("keydown", e => { if(e.key==="Escape") modal.classList.remove("open"); });
+
+function reset(){
+  S = fresh(); save(); current = null; EX.path = ["docs"]; EX.file = null; EX.hidden = false; ML.open = null; ML.folder = "inbox"; KPopen = null; CH = "c_general"; webOff = null;
+  document.getElementById("winHost").innerHTML = ""; modal.classList.remove("open"); document.getElementById("hintbox").style.display = "none";
+  notesEl.value = ""; renderProgress(); renderDesk(); renderLogin();
+}
+document.getElementById("resetBtn").onclick = () => { if(confirm("Effacer toute la progression et recommencer ?")) reset(); };
+
+renderProgress(); renderDesk(); renderLogin();
+</script>
+</body>
+</html>
