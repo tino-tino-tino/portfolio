@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tino MIELE — Portfolio</title>
@@ -8,8 +7,8 @@
 <link rel="apple-touch-icon" id="favicon-apple" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABMElEQVR42u2aIQ7CQBBFtwRBgiDB47CgSG+AIuEknKECi+UkJChu0KCw4OoLCAIOLDtmsuy2WbLvue02afIz/3e2HWMAIGWyth847g3e3+vL656F3Helk3oFIEDqAnTb9ny5Hln7eWGC7rtmAhZAAPqAsB6XSM82TV5UxiUTsAACkAFh3+uxoWUCFkAAzgK+vXxlYuoDqAAEQAC/DPB9z5+fN2t93UyoAARAgIjPAv/W23MWwAII0GwfUB5r20OzIRWAAAiQUAasdg/7glw7sl32o84ULIAAqWeANoNzOiy8HjCd7+1M0Hp3z4zg3yAWQAC37wHaDVomSI9rmSHv1/oGDdm3MCOEBRAgbAZomeDaR8gM0DyrzSAxK4wFEKDdDPAl9Lw/FYAACAAAAADwEx9SZXABoMkBbwAAAABJRU5ErkJggg==">
 <meta name="description" content="Portfolio de Tino MIELE : affiches, identités visuelles et photo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=VT323&amp;display=swap" rel="stylesheet">
 
 <script id="zone-site">
 /* ╔══════════════════════════════════════════════════════════════════╗
@@ -115,6 +114,11 @@ const SITE = {
   "livre": {
     "titre": "HELIMEA",
     "pages": [
+      {
+        "type": "chapitre",
+        "titre": "Création du logo",
+        "sousTitre": ""
+      },
       {
         "blocs": [
           {
@@ -689,8 +693,8 @@ html{overflow-x:hidden}
     <div class="go" id="titre-go">▶ APPUYER SUR ENTRÉE</div>
   </div>
 
-  <section class="vue" id="vue-bureau" hidden aria-label="Le bureau, avec les créations">
-    <button class="vue-fermer" type="button" data-fermer>B · RETOUR</button>
+  <section class="vue" id="vue-bureau" hidden="" aria-label="Le bureau, avec les créations">
+    <button class="vue-fermer" type="button" data-fermer="">B · RETOUR</button>
     <div class="plateau" id="plateau">
       <button class="fleche" type="button" data-nav="-1" aria-label="Création précédente">◀</button>
       <figure class="feuille"><div class="feuille-img" id="feuille-img"></div><figcaption><strong id="feuille-titre"></strong><span id="feuille-n"></span></figcaption></figure>
@@ -699,8 +703,8 @@ html{overflow-x:hidden}
     <p class="aide-vue">◀ ▶ défiler · A : détails · B : retour</p>
   </section>
 
-  <section class="vue" id="vue-pc" hidden aria-label="L'ordinateur">
-    <button class="vue-fermer" type="button" data-fermer>B · RETOUR</button>
+  <section class="vue" id="vue-pc" hidden="" aria-label="L'ordinateur">
+    <button class="vue-fermer" type="button" data-fermer="">B · RETOUR</button>
     <div class="moniteur">
       <div class="ecran-pc"><div class="pc-zone" id="pc-zone"></div></div>
       <div class="moniteur-pied"><span>TINO·OS</span><i></i></div>
@@ -708,30 +712,30 @@ html{overflow-x:hidden}
     <p class="aide-vue">▲ ▼ choisir · A : ouvrir · B : retour</p>
   </section>
 
-  <section class="vue" id="vue-borne" hidden aria-label="Borne d'arcade">
+  <section class="vue" id="vue-borne" hidden="" aria-label="Borne d'arcade">
     <div class="borne-cadre">
       <div class="borne-haut" id="borne-titre"></div>
       <div class="borne-ecran"><iframe id="borne-jeu" title="Jeu" allow="autoplay; fullscreen; gamepad"></iframe></div>
-      <div class="borne-bas"><button class="borne-btn" type="button" data-fermer>QUITTER</button><a class="borne-btn" id="borne-onglet" target="_blank" rel="noopener">PLEIN ÉCRAN ↗</a></div>
+      <div class="borne-bas"><button class="borne-btn" type="button" data-fermer="">QUITTER</button><a class="borne-btn" id="borne-onglet" target="_blank" rel="noopener">PLEIN ÉCRAN ↗</a></div>
     </div>
   </section>
-  <section class="vue" id="vue-livre" hidden aria-label="Le livre">
-    <button class="vue-fermer" type="button" data-fermer>B · RETOUR</button>
+  <section class="vue" id="vue-livre" hidden="" aria-label="Le livre">
+    <button class="vue-fermer" type="button" data-fermer="">B · RETOUR</button>
     <div class="livre" id="livre"><div class="page gauche" id="page-g"></div><div class="page droite" id="page-d"></div></div>
-    <div class="livre-nav"><button class="fleche" type="button" data-livre="-1" aria-label="Page précédente">◀</button><span id="livre-n"></span><button class="fleche" type="button" data-livre="1" aria-label="Page suivante">▶</button><button class="fleche fleche-sommaire" type="button" id="livre-sommaire" aria-label="Revenir au sommaire" hidden>≡</button></div>
+    <div class="livre-nav"><button class="fleche" type="button" data-livre="-1" aria-label="Page précédente">◀</button><span id="livre-n"></span><button class="fleche" type="button" data-livre="1" aria-label="Page suivante">▶</button><button class="fleche fleche-sommaire" type="button" id="livre-sommaire" aria-label="Revenir au sommaire" hidden="">≡</button></div>
   </section>
-  <section class="vue" id="vue-terra" hidden aria-label="Le terrarium">
-    <button class="vue-fermer" type="button" data-fermer>B · RETOUR</button>
+  <section class="vue" id="vue-terra" hidden="" aria-label="Le terrarium">
+    <button class="vue-fermer" type="button" data-fermer="">B · RETOUR</button>
     <div class="vitre"><canvas id="terra" width="960" height="600"></canvas></div>
     <p class="aide-vue" id="terra-aide">A ou toucher le pogona pour le caresser · B : retour</p>
   </section>
 
-  <div class="dialogue" id="dialogue" hidden aria-live="polite"><p id="dialogue-texte"></p><span id="dialogue-suite" hidden>▼</span></div>
-  <div class="choix" id="choix" hidden><div data-c="0" class="sel">OUI</div><div data-c="1">NON</div></div>
+  <div class="dialogue" id="dialogue" hidden="" aria-live="polite"><p id="dialogue-texte"></p><span id="dialogue-suite" hidden="">▼</span></div>
+  <div class="choix" id="choix" hidden=""><div data-c="0" class="sel">OUI</div><div data-c="1">NON</div></div>
   <div class="fondu" id="fondu"></div>
   <div class="boutons-haut"><button class="bouton-son" id="bouton-son" type="button" aria-label="Couper le son">♪ ON</button><button class="bouton-menu" id="bouton-menu" type="button">MENU</button></div>
   <div class="lieu" id="lieu" aria-live="polite"></div>
-  <div class="menu" id="menu" hidden><div data-m="creations">CRÉATIONS</div><div data-m="cv">CV</div><div data-m="videos">VIDÉOS</div><div data-m="contact">CONTACT</div><div data-m="son">SON : OUI</div><div data-m="fermer">FERMER</div></div>
+  <div class="menu" id="menu" hidden=""><div data-m="creations">CRÉATIONS</div><div data-m="cv">CV</div><div data-m="videos">VIDÉOS</div><div data-m="contact">CONTACT</div><div data-m="son">SON : OUI</div><div data-m="fermer">FERMER</div></div>
 </main>
 
 <div class="manette" id="manette" aria-hidden="true">
@@ -741,7 +745,7 @@ html{overflow-x:hidden}
 </div>
 
 <footer class="coordonnees" id="coordonnees"></footer>
-<div class="grand" id="grand" hidden role="dialog" aria-label="Image en grand format">
+<div class="grand" id="grand" hidden="" role="dialog" aria-label="Image en grand format">
   <figure><img id="grand-img" alt=""><figcaption><strong id="grand-titre"></strong><span id="grand-texte"></span></figcaption></figure>
   <button class="grand-btn grand-prec" type="button" data-g="-1" aria-label="Précédente">◀</button>
   <button class="grand-btn grand-suiv" type="button" data-g="1" aria-label="Suivante">▶</button>
@@ -3255,7 +3259,4 @@ async function enregistrer() {
 construire();
 if (location.hash === "#editer") basculer(true);
 })();
-</script>
-
-</body>
-</html>
+</script></body></html>
